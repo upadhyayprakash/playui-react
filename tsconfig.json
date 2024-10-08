@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true, // Generates type declaration files
-    "declarationMap": true, // Generates source maps for type files
+    "declarationMap": false, // Generates source maps for type files
     "outDir": "dist", // Outputs built files into the `dist/` directory
     "target": "ES2020", // ECMAScript target
     "useDefineForClassFields": true,

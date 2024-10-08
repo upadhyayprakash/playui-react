@@ -1,24 +1,40 @@
 {
   "name": "playui-react",
+  "version": "0.1.0",
   "description": "A modern, lightweight design system and React component library for effortless frontend development.",
   "author": {
     "name": "Prakash Upadhyay",
     "email": "prakash.upadhyay93@yahoo.com",
     "url": "https://upadhyayprakash.github.io/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upadhyayprakash/playui-react.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "private": false,
   "license": "MIT",
-  "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "component",
+    "library",
+    "playui",
+    "playui-react",
+    "reactjs"
   ],
   "scripts": {
     "dev": "vite",
     "test": "jest --watch --coverage",
-    "build": "vite build && tsc",
+    "build": "vite build && tsc --declaration",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -26,9 +42,11 @@
     "build-storybook": "storybook build",
     "build-storybook-docs": "storybook build --docs",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,scss,md}'",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "playui-react": "^0.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "styled-components": "^6.1.13"
@@ -75,6 +93,7 @@
     "prettier": "^3.3.3",
     "storybook": "^8.3.0",
     "storybook-dark-mode": "^4.0.2",
+    "terser": "^5.34.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "5.5.4",

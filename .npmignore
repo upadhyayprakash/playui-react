@@ -1,0 +1,21 @@
+# Ignore these files when publishing to npm
+src/
+node_modules/
+.vscode/
+.git/
+.husky/
+.storybook/
+tests/
+coverage/
+design-tokens/
+storybook-static/
+dist/ # (This can be removed because we actually need the dist folder to be published)
+*.log
+*.config.js
+.prettierrc
+.prettierignore
+commitlint.config.js
+eslint.config.js
+index.html
+jest.config.js
+NOTES.md
