@@ -110,7 +110,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "jest -- --coverage --passWithNoTests",
+      "jest --coverage --passWithNoTests",
       "npm run lint --fix",
       "npm run format",
       "git add"
