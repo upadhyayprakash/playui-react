@@ -27,8 +27,8 @@ const config: StorybookConfig = {
       // Refer during local development
       return {
         'design-system': {
-          title: 'OliaSoft Design System',
-          url: 'https://oliasoft-open-source.gitlab.io/react-ui-library/storybook',
+          title: 'PlayUI Components',
+          url: 'https://upadhyayprakash.github.io/playui-react',
         },
       };
     }

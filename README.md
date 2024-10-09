@@ -2,8 +2,16 @@
 
 <p align="center"><a href="https://upadhyayprakash.github.io/playui-react" target="_blank"><img src="./public/playui_full_logo.svg" alt="PlayUI Logo"></a></p>
 
+<p align="center">A modern, lightweight design system and a React component library for effortless frontend development.</p>
+
+<p align="center">
+  <a href="https://bundlephobia.com/package/playui-react">
+    <img alt="bundlephobia" style="height:30px" src="https://badgen.net/bundlephobia/minzip/playui-react" />
+  </a>
+</p>
+
 # playui-react
-`playui-react` is a modern, lightweight design system and a React Component library for effortless frontend development. It offers accessible components with customizable themes.
+`playui-react` is an **open-source**, modern, lightweight design system and a React component library for effortless frontend development. It offers accessible components with customizable themes.
 
 ## Why `playui-react`?
 - **TypeScript**: All the library components are type-safe.
@@ -70,7 +78,7 @@ In your `.stroybook/main.ts` file, add following config,
 // ...
   refs: {
     "design-system": {
-      title: 'PlayUI Design System',
+      title: 'PlayUI Components',
       //👇 The public url of 'playui-react' storybook
       url: 'https://upadhyayprakash.github.io/playui-react',
     },
@@ -82,7 +90,35 @@ In your `.stroybook/main.ts` file, add following config,
 > Showcasing the design system during feature development increases the likelihood that developers will reuse existing components instead of wasting time inventing their own.
 
 ## Contribute
+Raise the PR with changes and ensure it's passing test and linting checks.
+
+Husky needs to be activated locally for smooth commit experience. Read more about [husky](https://typicode.github.io/husky/).
+
+(A detailed contribution guide is on its way.)
 
 ## Changelog
+(coming soon)
 
 ## Roadmap
+
+[**playui-react**](https://upadhyayprakash.github.io/playui-react) has a long roadmap to first bring it at par with alternatives and then add features that sets it apart, such as,
+
+- Efficient CI/CD pipeline for publishing artifacts
+  - Publish npm package using GitHub Actions
+  - Changelog publishing, and more
+- Accessibility
+- Add i18n extension
+- Extendable themes
+- Token Guides (Color, Spacing, Icons etc.)
+- Interaction Tests using add-on.
+- A lots of components
+  - Layout (page, section etc.)
+  - Form fields
+  - DataTable
+  - Tabs, Modal and more.
+
+Pick your topic and create an issue to get started.
+
+## License
+
+`playui-react` is distributed under [MIT license](https://github.com/upadhyayprakash/playui-react/blob/main/LICENSE).
