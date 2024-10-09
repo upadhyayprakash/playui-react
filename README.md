@@ -96,6 +96,11 @@ Husky needs to be activated locally for smooth commit experience. Read more abou
 
 (A detailed contribution guide is on its way.)
 
+### Contributors
+<a href="https://github.com/upadhyayprakash/playui-react/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=upadhyayprakash/playui-react" />
+</a>
+
 ## Changelog
 (coming soon)
 
