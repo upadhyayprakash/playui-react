@@ -108,6 +108,9 @@
     "react-dom": ">= 18",
     "styled-components": ">= 6"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "jest --coverage --passWithNoTests",
