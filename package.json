@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/upadhyayprakash/playui-react.git"
   },
+  "bugs": {
+    "url": "https://github.com/upadhyayprakash/playui-react/issues"
+  },
+  "homepage": "https://github.com/upadhyayprakash/playui-react#readme",
   "publishConfig": {
     "access": "public"
   },
@@ -46,7 +50,6 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "playui-react": "^0.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "styled-components": "^6.1.13"

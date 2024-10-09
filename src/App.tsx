@@ -1,7 +1,7 @@
 import './App.css';
 import { ThemeProvider } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
-import Button from './components/Button';
+import { Button } from './components/Button';
 
 function App(): React.ReactNode {
   return (
