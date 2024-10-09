@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import { ThemeProvider as StyledThemeProvider, DefaultTheme } from 'styled-components';
-import { lightTheme, darkTheme } from '../themes';
+import { lightTheme, darkTheme } from '../themes/design-tokens';
 import { GlobalStyle } from '../themes/globalStyles';
 
 interface ThemeContextProps {
@@ -17,10 +17,10 @@ type Theme = 'dark' | 'light';
 
 interface ThemeProviderProps {
   children: ReactNode;
-  customTheme?: Theme; // Allow passing a custom theme
+  mode?: Theme; // Allow passing a custom theme
 }
 
-export const ThemeProvider = ({ children, customTheme }: ThemeProviderProps): React.ReactNode => {
+export const ThemeProvider = ({ children, mode }: ThemeProviderProps): React.ReactNode => {
   const getSystemPreference = (): Theme => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     return mediaQuery.matches ? 'dark' : 'light';
@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children, customTheme }: ThemeProviderProps): Re
 
   const getInitialTheme = (): Theme => {
     // Step 1: Use customTheme if provided
-    if (customTheme) return customTheme;
+    if (mode) return mode;
 
     // Step 2: Check for a saved theme in localStorage
     const savedTheme = localStorage.getItem('theme') as Theme | null;
@@ -57,8 +57,8 @@ export const ThemeProvider = ({ children, customTheme }: ThemeProviderProps): Re
   }, []);
 
   useEffect(() => {
-    if (customTheme) setTheme(customTheme);
-  }, [customTheme]);
+    if (mode) setTheme(mode);
+  }, [mode]);
 
   const toggleTheme = (): void => {
     const newTheme = theme === 'light' ? 'dark' : 'light';

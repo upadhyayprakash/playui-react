@@ -87,7 +87,7 @@ export const decorators = [
     const darkMode = useDarkMode();
 
     return (
-      <ThemeProvider customTheme={darkMode ? 'dark' : 'light'}>
+      <ThemeProvider mode={darkMode ? 'dark' : 'light'}>
         <StoryFn />
       </ThemeProvider>
     );

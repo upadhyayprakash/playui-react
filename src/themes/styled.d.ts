@@ -4,6 +4,10 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     background: string;
     color: string;
+    link: {
+      textColor: string;
+      hoverTextColor: string;
+    };
     button: {
       primary: {
         backgroundColor: string;

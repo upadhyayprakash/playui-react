@@ -1,5 +1,5 @@
 import { useTheme } from '../context/ThemeContext';
-import { lightTheme } from '../themes';
+import { lightTheme } from '../themes/design-tokens';
 import { Button } from './Button';
 
 const ThemeToggle = (): React.ReactNode => {
