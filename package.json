@@ -50,11 +50,10 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": ">= 18",
+    "react-dom": ">= 18"
   },
   "devDependencies": {
-    "styled-components": "^6.1.13",
     "@chromatic-com/storybook": "^1.9.0",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
@@ -96,6 +95,7 @@
     "prettier": "^3.3.3",
     "storybook": "^8.3.0",
     "storybook-dark-mode": "^4.0.2",
+    "styled-components": "^6.1.13",
     "terser": "^5.34.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
@@ -108,9 +108,6 @@
     "react-dom": ">= 18",
     "styled-components": ">= 6"
   },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.9.5"
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "jest --coverage --passWithNoTests",
@@ -118,5 +115,8 @@
       "npm run format",
       "git add"
     ]
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.24.0"
   }
 }
