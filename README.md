@@ -90,11 +90,9 @@ In your `.stroybook/main.ts` file, add following config,
 > Showcasing the design system during feature development increases the likelihood that developers will reuse existing components instead of wasting time inventing their own.
 
 ## Contribute
-Raise the PR with changes and ensure it's passing test and linting checks.
-
 Husky needs to be activated locally for smooth commit experience. Read more about [husky](https://typicode.github.io/husky/).
 
-(A detailed contribution guide is on its way.)
+Check our [Contributors guideline](https://github.com/upadhyayprakash/playui-react/blob/main/CONTRIBUTING.md) to learn about development process and how you can raise a Pull Request with new changes.
 
 ### Contributors
 <a href="https://github.com/upadhyayprakash/playui-react/graphs/contributors">
