@@ -6,14 +6,22 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
    * Type of button
    */
   variant?: 'primary' | 'secondary';
+
   /**
    * Size of the button. Choose based on context.
    */
   size?: 'small' | 'medium' | 'large';
+
   /**
    * Button content displayed. It can be text or other React component.
    */
   children?: ReactNode;
+
+  /**
+   * To accept any additional class names
+   */
+  className?: string;
+
   /**
    * Handler for 'click' event.
    */
@@ -27,10 +35,11 @@ const Button = ({
   variant = 'primary',
   size = 'medium',
   children,
+  className,
   ...rest
 }: ButtonProps): React.ReactNode => {
   return (
-    <StyledButton variant={variant} size={size} {...rest}>
+    <StyledButton variant={variant} size={size} className={className} {...rest}>
       {children}
     </StyledButton>
   );

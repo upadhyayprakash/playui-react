@@ -6,14 +6,22 @@ interface IconProps extends HTMLAttributes<HTMLSpanElement> {
    * The name of the icon, or an actual icon component.
    */
   icon: ReactNode;
+
   /**
    * Size of the icon (e.g., small, medium, large).
    */
   size?: 'small' | 'medium' | 'large' | string;
+
   /**
    * Color of the icon.
    */
   color?: string;
+
+  /**
+   * To accept any additional class names
+   */
+  className?: string;
+
   /**
    * Optional click handler.
    */
@@ -23,9 +31,16 @@ interface IconProps extends HTMLAttributes<HTMLSpanElement> {
 /**
  * A reusable Icon component.
  */
-const Icon = ({ icon, size, color, onClick, ...rest }: IconProps): React.ReactNode => {
+const Icon = ({ icon, size, color, onClick, className, ...rest }: IconProps): React.ReactNode => {
   return (
-    <StyledIcon size={size} color={color} onClick={onClick} {...rest} role="img">
+    <StyledIcon
+      size={size}
+      color={color}
+      onClick={onClick}
+      className={className}
+      role="img"
+      {...rest}
+    >
       {icon}
     </StyledIcon>
   );
