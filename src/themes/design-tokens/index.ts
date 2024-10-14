@@ -21,6 +21,9 @@ export const lightTheme: DefaultTheme = {
       color: '#3e3e3e',
     },
   },
+  icon: {
+    defaultColor: '#aaa',
+  },
 };
 
 export const darkTheme: DefaultTheme = {
@@ -43,5 +46,8 @@ export const darkTheme: DefaultTheme = {
       backgroundFocusColor: '#1f1f1f',
       color: '#f0f0f0',
     },
+  },
+  icon: {
+    defaultColor: '#eee',
   },
 };

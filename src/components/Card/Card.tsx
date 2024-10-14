@@ -17,8 +17,8 @@ type StyledCardProps = Partial<CardProps>;
 
 const StyledCard = styled.div<StyledCardProps>`
   border: 1px solid #ddd;
-  padding: 16px;
-  border-radius: 8px;
+  padding: 1rem;
+  border-radius: 0.5rem;
 `;
 
 export type { CardProps };

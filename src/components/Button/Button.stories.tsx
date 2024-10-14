@@ -15,12 +15,16 @@ const meta: Meta<typeof Button> = {
     // Here you can define custom controls for the component props
     children: { control: 'text' },
   },
-  args: { onClick: fn() },
+  args: { onClick: fn(), children: 'Button' },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {},
+};
 
 export const Primary: Story = {
   args: {

@@ -22,5 +22,8 @@ declare module 'styled-components' {
         color: string;
       };
     };
+    icon: {
+      defaultColor: string;
+    };
   }
 }

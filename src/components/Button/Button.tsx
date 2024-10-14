@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface ButtonProps {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * Type of button
    */
@@ -36,7 +36,9 @@ const Button = ({
   );
 };
 
-type StyledButtonProps = Partial<ButtonProps>;
+interface StyledButtonProps extends Omit<ButtonProps, 'size'> {
+  size: 'small' | 'medium' | 'large';
+}
 
 const StyledButton = styled.button<StyledButtonProps>`
   display: inline-block;
@@ -48,10 +50,10 @@ const StyledButton = styled.button<StyledButtonProps>`
     variant === 'primary' ? theme.button?.primary.color : theme.button?.secondary.color};
   border: 0;
   outline: 0;
-  border-radius: 4px;
-  font-size: ${({ size }) => (size === 'small' ? '12px' : size === 'large' ? '16px' : '14px')};
-  padding: ${({ size }) =>
-    size === 'small' ? '10px 16px' : size === 'large' ? '12px 24px' : '11px 20px'};
+  border-radius: 0.25rem;
+  font-size: ${({ size }) =>
+    sizeMap[size].fontSize || sizeMap['medium'].fontSize}; // Dynamic font-size
+  padding: ${({ size }) => sizeMap[size].padding || sizeMap['medium'].padding};
   cursor: pointer;
   font-weight: 600;
   &:hover {
@@ -68,6 +70,12 @@ const StyledButton = styled.button<StyledButtonProps>`
         : theme.button?.secondary.backgroundFocusColor};
   }
 `;
+
+const sizeMap: { [key: string]: { fontSize: string; padding: string } } = {
+  small: { fontSize: '0.75rem', padding: '0.625rem 1rem' },
+  medium: { fontSize: '0.875rem', padding: '0.75rem 1.25rem' },
+  large: { fontSize: '1rem', padding: '0.75rem 1.5rem' },
+};
 
 export type { ButtonProps };
 export default Button;
