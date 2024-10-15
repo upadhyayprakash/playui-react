@@ -29,3 +29,6 @@ dist-ssr
 # Local files
 NOTES.md
 design-tokens-future
+
+# Build files
+*.tgz

@@ -1,6 +1,8 @@
 import { ReactNode, HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
+type IconSizes = 'small' | 'medium' | 'large';
+
 interface IconProps extends HTMLAttributes<HTMLSpanElement> {
   /**
    * The name of the icon, or an actual icon component.
@@ -10,7 +12,7 @@ interface IconProps extends HTMLAttributes<HTMLSpanElement> {
   /**
    * Size of the icon (e.g., small, medium, large).
    */
-  size?: 'small' | 'medium' | 'large' | string;
+  size?: IconSizes | string;
 
   /**
    * Color of the icon.
@@ -23,6 +25,11 @@ interface IconProps extends HTMLAttributes<HTMLSpanElement> {
   className?: string;
 
   /**
+   * **aria-label** for clickable icon. It's used by screen readers.
+   */
+  ariaLabel?: string;
+
+  /**
    * Optional click handler.
    */
   onClick?: () => void;
@@ -31,14 +38,32 @@ interface IconProps extends HTMLAttributes<HTMLSpanElement> {
 /**
  * A reusable Icon component.
  */
-const Icon = ({ icon, size, color, onClick, className, ...rest }: IconProps): React.ReactNode => {
+const Icon = ({
+  icon,
+  size,
+  color,
+  onClick,
+  className,
+  ariaLabel,
+  ...rest
+}: IconProps): React.ReactNode => {
+  const handleKeyDown = (event: React.KeyboardEvent): void => {
+    if (onClick && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <StyledIcon
       size={size}
       color={color}
       onClick={onClick}
       className={className}
-      role="img"
+      role={onClick ? 'button' : 'img'}
+      tabIndex={onClick ? 0 : undefined}
+      aria-label={ariaLabel || 'Icon'}
+      onKeyDown={handleKeyDown} // Handle keyboard interaction for Accessibility
       {...rest}
     >
       {icon}
@@ -46,8 +71,14 @@ const Icon = ({ icon, size, color, onClick, className, ...rest }: IconProps): Re
   );
 };
 
+const sizeMap: Record<IconSizes, string> = {
+  small: '1rem',
+  medium: '1.5rem',
+  large: '2rem',
+};
+
 interface StyledIconProps extends Partial<IconProps> {
-  size?: 'small' | 'medium' | 'large' | string;
+  size?: IconSizes | string;
 }
 
 const StyledIcon = styled.span<StyledIconProps>`
@@ -56,12 +87,6 @@ const StyledIcon = styled.span<StyledIconProps>`
   color: ${({ color, theme }) => color || theme.icon?.defaultColor || 'inherit'};
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
 `;
-
-const sizeMap: { [key: string]: string } = {
-  small: '1rem',
-  medium: '1.5rem',
-  large: '2rem',
-};
 
 export type { IconProps };
 export default Icon;

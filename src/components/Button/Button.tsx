@@ -1,7 +1,14 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
+type ButtonSizes = 'small' | 'medium' | 'large';
+
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  /**
+   * Button content. It can be text or a React component.
+   */
+  children: ReactNode;
+
   /**
    * Type of button
    */
@@ -10,12 +17,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * Size of the button. Choose based on context.
    */
-  size?: 'small' | 'medium' | 'large';
-
-  /**
-   * Button content displayed. It can be text or other React component.
-   */
-  children?: ReactNode;
+  size?: ButtonSizes;
 
   /**
    * To accept any additional class names
@@ -45,6 +47,14 @@ const Button = ({
   );
 };
 
+type ButtonSizeValues = { fontSize: string; padding: string };
+
+const sizeMap: Record<ButtonSizes, ButtonSizeValues> = {
+  small: { fontSize: '0.75rem', padding: '0.625rem 1rem' },
+  medium: { fontSize: '0.875rem', padding: '0.75rem 1.25rem' },
+  large: { fontSize: '1rem', padding: '0.75rem 1.5rem' },
+};
+
 interface StyledButtonProps extends Omit<ButtonProps, 'size'> {
   size: 'small' | 'medium' | 'large';
 }
@@ -58,7 +68,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   color: ${({ theme, variant }) =>
     variant === 'primary' ? theme.button?.primary.color : theme.button?.secondary.color};
   border: 0;
-  outline: 0;
   border-radius: 0.25rem;
   font-size: ${({ size }) =>
     sizeMap[size].fontSize || sizeMap['medium'].fontSize}; // Dynamic font-size
@@ -71,7 +80,6 @@ const StyledButton = styled.button<StyledButtonProps>`
         ? theme.button?.primary.backgroundHoverColor
         : theme.button?.secondary.backgroundHoverColor};
   }
-
   &:active {
     background-color: ${({ theme, variant }) =>
       variant === 'primary'
@@ -79,12 +87,6 @@ const StyledButton = styled.button<StyledButtonProps>`
         : theme.button?.secondary.backgroundFocusColor};
   }
 `;
-
-const sizeMap: { [key: string]: { fontSize: string; padding: string } } = {
-  small: { fontSize: '0.75rem', padding: '0.625rem 1rem' },
-  medium: { fontSize: '0.875rem', padding: '0.75rem 1.25rem' },
-  large: { fontSize: '1rem', padding: '0.75rem 1.5rem' },
-};
 
 export type { ButtonProps };
 export default Button;
