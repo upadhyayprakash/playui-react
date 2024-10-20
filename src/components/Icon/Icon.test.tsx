@@ -1,11 +1,20 @@
-import { render } from '@testing-library/react';
+import { RenderResult, render as rtlRender } from '@testing-library/react';
 import Icon from './Icon';
 import { FaUser, FaBell } from 'react-icons/fa'; // Example imports from react-icons
+import { cloneElement } from 'react';
+
+// Custom render function to inject data-testid dynamically
+const render = (ui: React.ReactElement, { testId = 'TEST_ID', ...options } = {}): RenderResult => {
+  return rtlRender(
+    cloneElement(ui, { ['data-testid']: testId }), // Dynamically pass 'data-testid' prop
+    options
+  );
+};
 
 describe('Icon Component', () => {
   it('renders a predefined icon (user)', () => {
-    const { getByRole } = render(<Icon icon={<FaUser />} size="2rem" />);
-    const iconElement = getByRole('img'); // Assuming the StyledIcon uses role="img"
+    const { getByTestId } = render(<Icon icon={<FaUser />} size="2rem" />, { testId: 'icon' });
+    const iconElement = getByTestId('icon'); // Assuming the StyledIcon uses role="img"
 
     expect(iconElement).toBeInTheDocument();
     expect(iconElement).toHaveStyle({ fontSize: '2rem' });
@@ -13,8 +22,8 @@ describe('Icon Component', () => {
   });
 
   it('renders a predefined icon (bell)', () => {
-    const { getByRole } = render(<Icon icon={<FaBell />} size="2rem" />);
-    const iconElement = getByRole('img');
+    const { getByTestId } = render(<Icon icon={<FaBell />} size="2rem" />, { testId: 'icon' });
+    const iconElement = getByTestId('icon');
 
     expect(iconElement).toBeInTheDocument();
     expect(iconElement).toHaveStyle({ fontSize: '2rem' });
@@ -22,8 +31,8 @@ describe('Icon Component', () => {
   });
 
   it('renders a custom React node icon', () => {
-    const { getByRole } = render(<Icon icon={<FaBell />} size="1.5rem" />);
-    const iconElement = getByRole('img');
+    const { getByTestId } = render(<Icon icon={<FaBell />} size="1.5rem" />, { testId: 'icon' });
+    const iconElement = getByTestId('icon');
 
     expect(iconElement).toBeInTheDocument();
     expect(iconElement).toHaveStyle({ fontSize: '1.5rem' });
@@ -31,16 +40,16 @@ describe('Icon Component', () => {
   });
 
   it('renders with default size when size prop is not provided', () => {
-    const { getByRole } = render(<Icon icon={<FaUser />} />);
-    const iconElement = getByRole('img');
+    const { getByTestId } = render(<Icon icon={<FaUser />} />, { testId: 'icon' });
+    const iconElement = getByTestId('icon');
 
     expect(iconElement).toBeInTheDocument();
-    expect(iconElement).toHaveStyle({ fontSize: '1rem' }); // Default size
+    expect(iconElement).toHaveStyle({ fontSize: '1.5rem' }); // Default size
   });
 
   it('renders without crashing for unrecognized icon', () => {
-    const { getByRole } = render(<Icon icon={'Invalid Icon'} />);
-    const iconElement = getByRole('img');
+    const { getByTestId } = render(<Icon icon={'Invalid Icon'} />, { testId: 'icon' });
+    const iconElement = getByTestId('icon');
 
     expect(iconElement).toBeInTheDocument();
     expect(iconElement).toContainHTML('Invalid Icon'); // Check for the custom React node
