@@ -1,6 +1,6 @@
 export default {
   testEnvironment: 'jest-environment-jsdom', // Use jsdom for DOM-related tests
-  setupFilesAfterEnv: ['./src/setupTests.ts'], // Setup for jest-dom
+  setupFilesAfterEnv: ['./src/setupTests.tsx'], // Setup for jest-dom
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'], // Handle TS and JS files
   transform: {
     '^.+\\.tsx?$': [

@@ -69,3 +69,16 @@ This is the **DevZone** where you'd find everything you need to run this project
     };
     ```
 7. Make sure your `.stories.tsx` files are following standard patterns. Check for reference `Button.stories.tsx`.
+
+### Testing
+1. Don't use `data-testid` inside the component. Use it in the test file only. We've built a custom `render` utility function that accepts the `testId` prop, eg:
+    ```tsx
+    const { getByTestId } = render(<Icon icon={<FaUser />} />, { testId: 'icon' });
+    ```
+    This approach automatically injects the `data-testid` on the component being tested, to avoid **polluting** the source code during `production` build.
+    
+2. Ensure you're testing the basics such as component rendering (eg. `toBeInTheDocument()`) and presence of Textual content.
+
+3. Test if the Themes are getting applied when `<ThemeProvider>` is used. Use `renderWithTheme()` method if need to test the themed components.
+
+4. 

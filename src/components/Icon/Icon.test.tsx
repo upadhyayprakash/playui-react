@@ -1,15 +1,9 @@
-import { RenderResult, render as rtlRender } from '@testing-library/react';
+import { render, renderWithTheme } from '../../setupTests';
+import { Themes } from '../../themes';
+
+import { darkTheme, lightTheme } from '../../themes/design-tokens';
 import Icon from './Icon';
 import { FaUser, FaBell } from 'react-icons/fa'; // Example imports from react-icons
-import { cloneElement } from 'react';
-
-// Custom render function to inject data-testid dynamically
-const render = (ui: React.ReactElement, { testId = 'TEST_ID', ...options } = {}): RenderResult => {
-  return rtlRender(
-    cloneElement(ui, { ['data-testid']: testId }), // Dynamically pass 'data-testid' prop
-    options
-  );
-};
 
 describe('Icon Component', () => {
   it('renders a predefined icon (user)', () => {
@@ -53,5 +47,26 @@ describe('Icon Component', () => {
 
     expect(iconElement).toBeInTheDocument();
     expect(iconElement).toContainHTML('Invalid Icon'); // Check for the custom React node
+  });
+
+  it('renders the icon in "light" mode default color if no "color" is passed', () => {
+    const { getByTestId } = renderWithTheme(<Icon icon={<FaUser />} size="2rem" />, {
+      testId: 'icon',
+    });
+    const iconElement = getByTestId('icon');
+
+    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toHaveStyle(`color: ${lightTheme.icon.defaultColor}`); // light theme
+  });
+
+  it('renders the icon in "dark" mode default color if no "color" is passed', () => {
+    const { getByTestId } = renderWithTheme(<Icon icon={<FaUser />} size="2rem" />, {
+      testId: 'icon',
+      mode: Themes.dark,
+    });
+    const iconElement = getByTestId('icon');
+
+    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toHaveStyle(`color: ${darkTheme.icon.defaultColor}`); // dark theme
   });
 });

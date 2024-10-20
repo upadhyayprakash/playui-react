@@ -13,7 +13,12 @@ const ThemeContext = createContext<ThemeContextProps>({
   toggleTheme: () => {}, // Default function does nothing
 });
 
-type Theme = 'dark' | 'light';
+export const Themes = {
+  dark: 'dark',
+  light: 'light',
+} as const;
+
+export type Theme = keyof typeof Themes;
 
 interface ThemeProviderProps {
   children: ReactNode;
