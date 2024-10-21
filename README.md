@@ -1,6 +1,6 @@
 <!-- [![PlayUI React](./public/playui_full_logo.svg)](https://upadhyayprakash.github.io/playui-react/ "PlayUI Logo") -->
 
-<p align="center"><a href="https://upadhyayprakash.github.io/playui-react" target="_blank"><img src="./public/playui_full_logo.svg" alt="PlayUI Logo"></a></p>
+<p align="center"><a href="https://upadhyayprakash.github.io/playui-react" target="_blank"><img src="./public/playui_github_thumbnail.svg" width="70%" alt="PlayUI Logo"></a></p>
 
 <p align="center">A modern, lightweight design system and a React component library for effortless frontend development.</p>
 
